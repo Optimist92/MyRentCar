@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
 		<title>Rent Car
 			<c:if test="${not empty title}">:: ${title}</c:if>
 		</title>
-		<c:url var="mainCssUrl" value="/main.css"/>
+		<c:url var="mainCssUrl" value="/resources/css/main.css"/>
 		<link rel="stylesheet" href="${mainCssUrl}" type="text/css">
 		<c:if test="${not empty css}">
 			<c:url var="cssAdd" value="${css}"/>
@@ -28,14 +29,14 @@
 				<div class="header-left">
 					<c:url var="start" value="/"/>
 					<a href="${start}" class="logo">
-						<c:url var="logo" value="/images/logo.png"/>
+						<c:url var="logo" value="/resources/images/logo.png"/>
 			            <img src="${logo}" alt="На главную" title="На главную" width="300" height="50">
 					</a>
 				</div>
 				<div class="header-center">
 					<div class="address">
 						<div class="address_img">
-							<c:url var="address_img" value="/images/compass.png"/>
+							<c:url var="address_img" value="/resources/images/compass.png"/>
 							<img src="${address_img}" alt="Адрес" width="40" height="40">
 						</div>
 						<div>
@@ -44,14 +45,14 @@
 	                </div>
 	                <div class="clock">
 	                	<div class="clock_img">
-	                		<c:url var="clock_img" value="/images/clock.png"/>
+	                		<c:url var="clock_img" value="/resources/images/clock.png"/>
 	                		<img src="${clock_img}" alt="Время работы" width="40" height="40">
 	                	</div>
 	                	<p>Часы работы:<br>10:00 - 20:00</p>
 	                </div>
 					<div class="mob_number">
 						<div class="mob_img">
-							<c:url var="mob_img" value="/images/mobile.png"/>
+							<c:url var="mob_img" value="/resources/images/mobile.png"/>
 							<img src="${mob_img}" alt="Телефон" width="40" height="40">
 						</div>
 						<div class="mob_info">
@@ -65,16 +66,14 @@
 					</div>
 				</div>
 				<div class="header-right">
-					<c:choose>
-						<c:when test="${not empty sessionUser}">
-							<c:url var="logoutUrl" value="/logout"/>
-							<div class="login_button"><a href="${logoutUrl}">Выйти</a></div>
-						</c:when>
-						<c:otherwise>
-							<c:url var="loginUrl" value="/login"/>
-							<div class="login_button"><a href="${loginUrl}">Войти</a></div>
-						</c:otherwise>
-					</c:choose>
+					<sec:authorize access="!isAuthenticated()">
+						<c:url var="loginUrl" value="/login"/>
+						<div class="login_button"><a href="${loginUrl}">Войти</a></div>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<c:url var="logoutUrl" value="/logout"/>
+						<div class="login_button"><a href="${logoutUrl}">${pageContext.request.userPrincipal.name}</a></div>
+					</sec:authorize>
 					<form>
 					    <div class="search">
 						     <input type="search" placeholder="поиск по автомобилям" name="q">

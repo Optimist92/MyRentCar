@@ -4,8 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
-<u:page title="Список моделей" mainMenu="true" css="/table.css">
-	<c:url var="deleteUrl" value="models/delete"/>
+<u:page title="Список моделей" mainMenu="true" css="/css/table.css">
+	<c:url var="deleteUrl" value="/models/delete"/>
 	<form action="${deleteUrl}" method="post" class="tables">
 		<div class="listModels">
 			<table>

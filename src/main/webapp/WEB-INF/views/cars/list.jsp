@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
-<u:page title="Список автомобилей" mainMenu="true" css="/table.css">
+<u:page title="Список автомобилей" mainMenu="true" css="/css/table.css">
 	<c:choose>
 		<c:when test="${sessionUser.role == 'MANAGER'}">
 			<c:url var="deleteUrl" value="/cars/delete"/>
@@ -24,14 +24,14 @@
 								<td>${car.model.brandCar} ${car.model.modelCar}</td>
 								<td>${car.regNumberAuto}</td>
 								<td>${car.color}</td>
-								<c:url var="editUrl" value="/cars/edit.jsp">
+								<c:url var="editUrl" value="/cars/edit">
 									<c:param name="id" value="${car.id}"/>
 								</c:url>
 								<td><a href="${editUrl}" class="form_button_edit">Редактировать</a></td>
 							</tr>
 						</c:forEach>
 					</table>
-					<c:url var="editUrl" value="/cars/edit.jsp"/>
+					<c:url var="editUrl" value="/cars/edit"/>
 					<a href="${editUrl}" class="form_button">Добавить</a>
 					<button type="submit" class="form_button_danger">Удалить</button>
 				</div>
@@ -51,7 +51,7 @@
 							<td>${car.model.brandCar} ${car.model.modelCar}</td>
 							<td>${car.regNumberAuto}</td>
 							<td>${car.color}</td>
-							<c:url var="newOrderUrl" value="/orders/edit.jsp">
+							<c:url var="newOrderUrl" value="/orders/edit">
 								<c:param name="id" value="${car.id}"/>
 							</c:url>
 							<td><a href="${newOrderUrl}" class="form_button">Заказать</a></td>

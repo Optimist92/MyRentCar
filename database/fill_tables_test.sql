@@ -156,13 +156,37 @@ INSERT INTO "car"
 (   2,     1     ,     '7286AT2'     ,    0    ,      2018      ,  'черный' , 	  0      );
 SELECT setval('car_id_seq', 2);
 
-INSERT INTO "user"
+INSERT INTO "usr"
 --------------------------------------------
-("id", "login"  , "password", "role") VALUES
+("id", "username"   , "password") VALUES
 --------------------------------------------
-(1   , 'root'   , 'root'    , 0     ),
-(2   , 'manager', 'manager' , 1     );
-SELECT setval('user_id_seq', 2);
+(1   , 'admin'   , '$2y$12$MRJE5qgeprGrw1cV2rgog.IJ1wOIadaUXKOPFs2FEZUfWEIxJB4Sm'),
+(2   , 'manager' , '$2y$12$OjydToXkj079ZrR9xzpKvOMeHQix61mt9Yy4jeaQyMH0isLhhZnF.'),
+(3   , 'operator', '$2y$12$AbPuEfKMfM1FqtNcK7E7heqGOPSN6z9dAK3E1ti/7z4C.Kb6BZEj.');
+SELECT setval('usr_id_seq', 3);
+
+INSERT INTO "role"
+------------------------------------
+("id", 		 "name"         ) VALUES
+------------------------------------
+(   1,     'ROLE_ADMIN'   ),
+(   2,     'ROLE_MANAGER'  ),
+(   3,     'ROLE_OPERATOR'   ),
+(   4,     'ROLE_USER'      );
+SELECT setval('role_id_seq', 4);
+
+INSERT INTO "usr_roles"
+------------------------------------
+("users_id", "roles_id" ) VALUES
+------------------------------------
+(   1   ,     1  ),
+(   2   ,     2  ),
+(   3   ,     3  );
+
+
+
+
+
 
 INSERT INTO "discount"
 --------------------------------------------
@@ -172,7 +196,7 @@ INSERT INTO "discount"
 (2   , 'Скидка 10%'     ,    0.90  ),
 (3   , 'Скидка 20%'     ,    0,80  );
 
-SELECT setval('user_id_seq', 3);
+SELECT setval('discount_id_seq', 3);
 
 /*INSERT INTO "admin"
 ----------------------------------

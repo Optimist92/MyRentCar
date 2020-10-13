@@ -14,7 +14,7 @@
 	</c:otherwise>
 </c:choose>
 
-<u:page title="${title}" mainMenu="true" css="/table.css">
+<u:page title="${title}" mainMenu="true" css="/css/table.css">
 			<h1>${title}</h1>
 	<br>
 	<br>

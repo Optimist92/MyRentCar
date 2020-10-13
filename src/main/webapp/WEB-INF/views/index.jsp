@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
 <u:page mainMenu="true">
@@ -9,28 +10,28 @@
     		<div class="slider__wrapper">
       			<div class="slider__items">
        				<div class="slider__item">
-          				<img class="img-fluid" src="../images/elantra_slider.jpg" alt="c1">
+          				<img class="img-fluid" src="/resources/images/elantra_slider.jpg" alt="c1">
         			</div>
        				<div class="slider__item">
-          				<img class="img-fluid" src="../images/tiguan_slider.jpg" alt="c2">
+          				<img class="img-fluid" src="/resources/images/tiguan_slider.jpg" alt="c2">
         			</div>
         			<div class="slider__item">
-          				<img class="img-fluid" src="../images/elantra2_slider.jpg" alt="c3">
+          				<img class="img-fluid" src="/resources/images/elantra2_slider.jpg" alt="c3">
         			</div>
         			<div class="slider__item">
-          				<img class="img-fluid" src="../images/hun_slider.jpg" alt="c4">
+          				<img class="img-fluid" src="/resources/images/hun_slider.jpg" alt="c4">
         			</div>
      			</div>
     		</div>
 		<a class="slider__control slider__control_prev" href="#" role="button"></a>
 		<a class="slider__control slider__control_next" href="#" role="button"></a>
 		</div>
-		<script src="../scripts/slider.js"></script>
+		<script src="/resources/js/slider.js"></script>
 		<div class="wrapper">
 			<div class="items">
 				<div class="item">
 					<div class="item-img">
-						<img src="../images/plus1.png" alt="Простая аренда">
+						<img src="/resources/images/plus1.png" alt="Простая аренда">
 					</div>
 					<div class="desc">
 						<div class="heading"><p>Простая аренда</p></div>
@@ -39,7 +40,7 @@
 				</div>
 				<div class="item">
 					<div class="item-img">
-						<img src="../images/plus2.png" alt="Безопасные автомобили">
+						<img src="/resources/images/plus2.png" alt="Безопасные автомобили">
 					</div>
 					<div class="desc">
 						<div class="heading"><p>Безопасные автомобили</p></div>
@@ -50,7 +51,7 @@
 				</div>
 				<div class="item">
 					<div class="item-img">
-						<img src="../images/plus3.png" alt="GPS">
+						<img src="/resources/images/plus3.png" alt="GPS">
 					</div>
 					<div class="desc">
 						<div class="heading"><p>GPS навигатор и детское кресло</p></div>
@@ -59,7 +60,7 @@
 				</div>
 				<div class="item">
 					<div class="item-img">
-						<img src="../images/plus4.png" alt="Доставка">
+						<img src="/resources/images/plus4.png" alt="Доставка">
 					</div>
 					<div class="desc">
 						<div class="heading"><p>Доставка автомобилей в срок</p></div>
@@ -68,7 +69,7 @@
 				</div>
 				<div class="item">
 					<div class="item-img">
-						<img src="../images/plus5.png" alt="Мы находимся в разных регионах">
+						<img src="/resources/images/plus5.png" alt="Мы находимся в разных регионах">
 					</div>
 					<div class="desc">
 						<div class="heading"><p>Мы находимся в разных регионах</p></div>
@@ -77,7 +78,7 @@
 				</div>
 				<div class="item">
 					<div class="item-img">
-						<img src="../images/plus6.png" alt="Сигнализация и автопрогрев">
+						<img src="/resources/images/plus6.png" alt="Сигнализация и автопрогрев">
 					</div>
 					<div class="desc">
 						<div class="heading"><p>Сигнализация и автопрогрев</p></div>

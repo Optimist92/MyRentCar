@@ -114,18 +114,26 @@ CREATE TABLE "discount" (
 	"percent" NUMERIC (2, 2) NOT NULL
 );
 
-CREATE TABLE "user" (
+CREATE TABLE "usr" (
 	"id" SERIAL PRIMARY KEY,
-	"login" TEXT NOT NULL UNIQUE,
-	"password" CHAR(128) NOT NULL,
-	"role" SMALLINT NOT NULL CHECK ("role" IN (0, 1, 2, 3))
-	/*
-	 * 0 - ADMIN
-	 * 1 - MANAGER
-	 * 2 - OPERATOR
-	 * 3 - CLIENT
-	 */
+	"username" TEXT NOT NULL UNIQUE,
+	"password" VARCHAR(255) NOT NULL,
+    "is_active" BOOLEAN NOT NULL
 );
+
+CREATE TABLE "role" (
+    "id" SERIAL PRIMARY KEY,
+    "name" VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE "user_roles" (
+    "user_id" INTEGER NOT NULL,
+    "role_id" INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES usr(id),
+    FOREIGN KEY (role_id) REFERENCES role(id),
+    UNIQUE (user_id, role_id)
+);
+
 
 CREATE TABLE "accident" (
 	"id" SERIAL PRIMARY KEY,
