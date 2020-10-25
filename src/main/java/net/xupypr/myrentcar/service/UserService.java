@@ -1,7 +1,9 @@
 package net.xupypr.myrentcar.service;
 
+import net.xupypr.myrentcar.domain.Client;
 import net.xupypr.myrentcar.domain.Role;
 import net.xupypr.myrentcar.domain.User;
+import net.xupypr.myrentcar.repository.ClientRepository;
 import net.xupypr.myrentcar.repository.RoleRepository;
 import net.xupypr.myrentcar.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class UserService implements UserDetailsService {
     RoleRepository roleRepository;
 
     @Autowired
+    ClientRepository clientRepository;
+
+    @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
@@ -40,6 +45,11 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
 
+        return user;
+    }
+
+    public User findUserByUsername(String username) {
+        User user = userRepository.findByUsername(username);
         return user;
     }
 
@@ -58,8 +68,10 @@ public class UserService implements UserDetailsService {
         if (userFromDB != null) {
             return false;
         }
-
+        Client client = new Client();
+        clientRepository.save(client);
         user.setRoles(Collections.singleton(new Role(4L, "ROLE_USER")));
+        user.setClients(Collections.singleton(client));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;

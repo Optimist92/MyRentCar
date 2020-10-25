@@ -2,15 +2,18 @@ package net.xupypr.myrentcar.service;
 
 import net.xupypr.myrentcar.domain.Car;
 import net.xupypr.myrentcar.repository.CarRepository;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.internal.SessionFactoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
-public class CarServiceImpl implements CarService{
+public class CarServiceImpl implements CarService {
 
     @Autowired
     private CarRepository carRepository;
@@ -50,5 +53,18 @@ public class CarServiceImpl implements CarService{
         for(Long id: ids) {
             carRepository.deleteById(id);
         }
+    }
+
+    @Override
+    @Transactional
+    public Set<Car> findBySearchRequest(String request) {
+        List<Car> carDesc = carRepository.searchCarDesc(request);
+        List<Car> carColor = carRepository.searchCarColor(request);
+        List<Car> carReg = carRepository.searchCarReg(request);
+        Set<Car> carList = new HashSet<>();
+        carList.addAll(carColor);
+        carList.addAll(carDesc);
+        carList.addAll(carReg);
+        return carList;
     }
 }

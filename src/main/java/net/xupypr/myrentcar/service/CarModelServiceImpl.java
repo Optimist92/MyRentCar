@@ -1,7 +1,10 @@
 package net.xupypr.myrentcar.service;
 
+import net.xupypr.myrentcar.domain.Car;
 import net.xupypr.myrentcar.domain.CarModel;
+import net.xupypr.myrentcar.domain.Price;
 import net.xupypr.myrentcar.repository.CarModelRepository;
+import net.xupypr.myrentcar.repository.PriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,8 @@ public class CarModelServiceImpl implements CarModelService{
     @Autowired
     private CarModelRepository carModelRepository;
 
+    @Autowired
+    private PriceRepository priceRepository;
 
     public CarModelServiceImpl(CarModelRepository carModelRepository) {
         this.carModelRepository = carModelRepository;
@@ -35,8 +40,9 @@ public class CarModelServiceImpl implements CarModelService{
 
     @Override
     @Transactional
-    public void save(CarModel model) {
+    public void save(CarModel model, Price price) {
         carModelRepository.save(model);
+        priceRepository.save(price);
     }
 
     @Override
@@ -52,4 +58,6 @@ public class CarModelServiceImpl implements CarModelService{
             carModelRepository.deleteById(id);
         }
     }
+
+
 }

@@ -8,7 +8,7 @@ table {
 	text-align: center;
 }
 th {
-	background: #BCEBDD;
+	background: #ff8282;
 	color: white;
 	text-shadow: 0 1px 1px #2D2020;
 	padding: 10px 20px;
@@ -30,7 +30,7 @@ th:last-child {
 }
 td {
 	padding: 10px 20px;
-	background: #F8E391;
+	background: #fffc81;
 }
 tr:last-child td:first-child {
 	border-radius: 0 0 0 10px;

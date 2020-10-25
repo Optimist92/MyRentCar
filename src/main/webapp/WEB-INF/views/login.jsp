@@ -1,29 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="u" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Log in with your account</title>
-</head>
-
-<body>
 <sec:authorize access="isAuthenticated()">
     <% response.sendRedirect("/"); %>
 </sec:authorize>
-<div>
-    <form method="POST" action="/login">
-        <h2>Вход в систему</h2>
-        <div>
-            <input name="username" type="text" placeholder="Username"
-                   autofocus="true"/>
-            <input name="password" type="password" placeholder="Password"/>
-            <button type="submit">Log In</button>
-            <h4><a href="/registration">Зарегистрироваться</a></h4>
+<u:page title="" css="/resources/css/login.css">
+    <c:url var="loginUrl" value="/login"/>
+<div class="wrapper">
+    <div class="loginform">
+        <form action="${loginUrl}" id="autoriz" method="post">
+            <div class="title">
+                Авторизация
+            </div>
+            <span>${error}</span>
+        <div class="input-form username">
+            <input class="input" id="username" name="username" placeholder="Username" autofocus="true" required="" type="text">
+            <i class="fas fa-user"></i>
         </div>
-    </form>
+        <div class="input-form password">
+            <input type="password" class="input" id="password" name="password" placeholder="Password" required="">
+            <i class="fas fa-key"></i>
+        </div>
+        <div class="regis">
+            <a href="/registration">Регистрация</a>
+        </div>
+        <div class="btn">
+            <input class="sub" id="submit" value="Войти" type="submit">
+        </div>
+        </form>
+    </div>
 </div>
-
-</body>
-</html>
+</u:page>

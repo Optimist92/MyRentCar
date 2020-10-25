@@ -27,7 +27,7 @@
 		<a class="slider__control slider__control_next" href="#" role="button"></a>
 		</div>
 		<script src="/resources/js/slider.js"></script>
-		<div class="wrapper">
+		<div class="wrapper_desc">
 			<div class="items">
 				<div class="item">
 					<div class="item-img">

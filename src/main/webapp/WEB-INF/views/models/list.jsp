@@ -4,13 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="u" %>
 
-<u:page title="Список моделей" mainMenu="true" css="/css/table.css">
-	<c:url var="deleteUrl" value="/models/delete"/>
-	<form action="${deleteUrl}" method="post" class="tables">
-		<div class="listModels">
+<u:page title="Список моделей" mainMenu="true" css="/resources/css/table.css">
+		<div class="tables">
 			<table>
 				<tr>
-					<th></th>
 					<th>Класс</th>
 					<th>Марка</th>
 					<th>Модель</th>
@@ -25,10 +22,10 @@
 					<th>Цена за 4-7 дней</th>
 					<th>Цена за 8 и более дней</th>
 					<th></th>
+					<th></th>
 				</tr>
 				<c:forEach var="model" items="${modelsList}" >
 					<tr>
-						<td><input type="checkbox" name="id" value="${model.id}"></td>
 						<td>${model.carClass.name}</td>
 						<td>${model.brandCar}</td>
 						<td>${model.modelCar}</td>
@@ -45,13 +42,19 @@
 						<c:url var="editUrl" value="/models/edit">
 							<c:param name="id" value="${model.id}"/>
 						</c:url>
-					<td><a href="${editUrl}" class="form__button">Редактировать</a></td>
+					<td><a href="${editUrl}" class="form_button_edit">Edit</a></td>
+						<td>
+							<form action="${pageContext.request.contextPath}/models/delete" method="post">
+								<input type="hidden" name="modelId" value="${model.id}"/>
+								<button type="submit" class="form_button_danger">Delete</button>
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
 			<c:url var="editUrl" value="/models/edit"/>
-			<a href="${editUrl}" class="form_button">Добавить</a>
-			<button type="submit" class="form_button_danger">Удалить</button>
+			<a href="${editUrl}" class="form_button">Add new model</a>
+			<c:url var="carList" value="/models/list"/>
+			<a href="${carList}" class="form_button_edit">Cars</a>
 		</div>
-	</form>
 </u:page>

@@ -14,11 +14,7 @@
 	</c:otherwise>
 </c:choose>
 
-<u:page title="${title}" mainMenu="true" css="/css/table.css">
-			<h1>${title}</h1>
-	<br>
-	<br>
-	<br>
+<u:page title="${title}" mainMenu="true" css="/resources/css/table.css">
 			<c:url var="saveUrl" value="/models/save"/>
 			<form action="${saveUrl}" method="post" class="form">
 				<c:if test="${not empty carModel.id}">
@@ -41,7 +37,7 @@
 				<br>
 				<br>
 				<label class="form__label" for="brandCar">Название производителя:</label>
-				<input class="form__text-input" type="text" id="brandCar" name="carBrand" value="${carModel.brandCar}">
+				<input class="form__text-input" type="text" id="brandCar" name="brandCar" value="${carModel.brandCar}">
 				<br>
 				<br>
 				<label class="form__label" for="modelCar">Название модели:</label>
@@ -117,17 +113,17 @@
 				<br>
 				<br>
 				<label class="form__label" for="cost4">4-7 дня</label>
-				<input class="form__text-input" type="text" id="cost1" name="cost4" value="${carModel.price.cost4}">
+				<input class="form__text-input" type="text" id="cost4" name="cost4" value="${carModel.price.cost4}">
 				<br>
 				<br>
 				<label class="form__label" for="cost8">Более 8 дней</label>
 				<input class="form__text-input" type="text" id="cost8" name="cost8" value="${carModel.price.cost8}">
 				<br>
 				<br>
-				<button class="form__button" type="submit">Сохранить</button>
+				<button class="form_button" type="submit">Сохранить</button>
 				<br>
 				<c:url var="listUrl" value="/models/list"/>
-				<button class="form__button" type="button" ><a class="form__button" href="${listUrl}">Отмена</a></button>
+				<div class="form_button_danger" type="button" ><a class="form_button_danger" href="${listUrl}">Отмена</a></div>
 			</form>
 </u:page>
 	

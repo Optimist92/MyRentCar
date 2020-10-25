@@ -6,16 +6,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
+<c:url var="carsLists" value="/cars/lists"/>
 <c:url var="carsList" value="/cars/list"/>
 <c:url var="admin" value="/admin"/>
 <div class="header-down">
 	<ul class="list">
-		<li><a href="${carsList}">Автомобили</a></li>
+		<li><a href="${carsLists}">Автомобили</a></li>
 		<li><a href="#">Условия проката</a></li>
 		<li><a href="#">Тарифы</a></li>
 		<li><a href="#">Скидки</a></li>
 		<li><a href="#">О компании</a></li>
-		<li><a href="#">Новости</a></li>
 		<li><a href="#">Отзывы</a></li>
 		<li><a href="#">Контакты</a></li>
 		<sec:authorize access="hasRole('ADMIN')">
@@ -25,7 +25,7 @@
 			<li><a href="${carsList}">Таблицы</a></li>
 		</sec:authorize>
 		<sec:authorize access="hasRole('OPERATOR')">
-			<li><a href="#">Заказы</a></li>
+
 		</sec:authorize>
 	</ul>
 </div>

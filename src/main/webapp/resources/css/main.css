@@ -19,12 +19,18 @@ html, body {
 	height: 100%;
 }
 
+.logbut {
+    display: block;
+}
+
 a {
 	text-decoration: none;
     color:black;
+    cursor: pointer;
 }
 
-a.form_button {
+
+.form_button {
     text-decoration: none;
     outline: none;
     display: inline-block;
@@ -44,7 +50,7 @@ a.form_button {
     box-shadow: 0 8px 15px rgba(0,0,0,.1);
     transition: .3s;
 }
-a.form_button:hover {
+.form_button:hover {
     text-decoration: none;
     background: #2EE59D;
     box-shadow: 0 15px 20px rgba(46,229,157,.4);
@@ -56,11 +62,10 @@ a.form_button:hover {
     text-decoration: none;
     outline: none;
     display: inline-block;
-    width: 100px;
+    width: 80px;
     height: 45px;
     line-height: 45px;
     border-radius: 45px;
-    margin: 10px 20px;
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
     text-transform: uppercase;
@@ -85,11 +90,10 @@ a.form_button:hover {
     text-decoration: none;
     outline: none;
     display: inline-block;
-    width: 120px;
+    width: 80px;
     height: 45px;
     line-height: 45px;
     border-radius: 45px;
-    margin: 10px 20px;
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
     text-transform: uppercase;
@@ -104,7 +108,7 @@ a.form_button:hover {
 }
 .form_button_edit:hover {
     text-decoration: none;
-    background: #ff3300;
+    background: #f38806;
     box-shadow: 0 15px 20px rgba(255,51,0,.4);
     color: white;
     transform: translateY(-7px);
@@ -154,6 +158,7 @@ header {
 
 .login_button a:hover {
 	text-decoration: none;
+    cursor: pointer;
 }
 
 .login_button:hover { background:#e8f801; } /* при наведении курсора мышки */
@@ -240,11 +245,20 @@ input[type="search"] {
     vertical-align: middle;
 
 }
-input[type="submit"] {
+
+.search-form{
+    display: flex;
+}
+
+input.search {
     width: 20px;
     height: 20px;
     border: none;
     background: url(../images/searching.png) no-repeat 50% 50%;
+}
+
+input[type="submit" i] {
+    background-color: #ed3669;
 }
 
 .wrapper {
@@ -290,16 +304,12 @@ input[type="submit"] {
 }
 
 .titles {
+    text-align: center;
 	position: relative;
 	overflow: hidden;
 	/*max-width: 600px;*/
 	margin-left: auto;
 	margin-right: auto;
-	top:129px;
-}
-
-.tables {
-	margin-top: 140px;
 }
 
     /* стили основного контейнера слайдера */
@@ -309,7 +319,7 @@ input[type="submit"] {
       /*max-width: 600px;*/
       margin-left: auto;
       margin-right: auto;
-      top:129px;
+      /*top:129px;*/
     }
 
     /* стили для обёртки, в которой заключены слайды */
@@ -389,7 +399,6 @@ input[type="submit"] {
       right: 0;
       bottom: 10px;
       left: 0;
-      z-index: 15;
       display: flex;
       justify-content: center;
       padding-left: 0;
@@ -424,3 +433,75 @@ input[type="submit"] {
       height: auto;
       max-width: 100%;
     }
+.userlist {
+    font-size: 27px;
+    text-align: end;
+    text-decoration: none;
+}
+.userlist:hover>.usermenu {
+    display: block;
+    text-decoration: none;
+}
+logbut{
+    text-decoration: none;
+}
+logbut:hover{
+    text-decoration: none;
+}
+.search_form {
+    margin-top: 19px;
+}
+.usermenu {
+    display: none;
+    position: absolute;
+    background-color: #fffb00;
+
+}
+
+footer {
+    color: white;
+    background-color: #181717;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.contact-label {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.author {
+    margin: 10px 0;
+}
+
+.contact {
+    display: flex;
+    width: 250px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.contact > * {
+    margin: 5px;
+}
+
+.contact_phone {
+    color: white;
+}
+
+.contact_phone:hover {
+    color: yellow;
+    text-decoration: none;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.content {
+    flex: 1 0 auto;
+}
+footer {
+    flex: 0 0 auto;
+}

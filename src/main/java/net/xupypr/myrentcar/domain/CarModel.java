@@ -9,8 +9,8 @@ public class CarModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "class_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "class_id", nullable = false)
     private CarClass carClass;
 
     @Column(name = "make_of_car")
@@ -19,16 +19,16 @@ public class CarModel {
     @Column(name = "model_of_car")
     private String modelCar;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "transmission_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "transmission_id", nullable = false)
     private Transmission transmission;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "type_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "type_id", nullable = false)
     private Type type;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "fuel_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fuel_id", nullable = false)
     private Fuel fuel;
 
     @Column(name = "avg_fuel_cons")
@@ -46,7 +46,6 @@ public class CarModel {
     @OneToOne(fetch = FetchType.EAGER)
     @PrimaryKeyJoinColumn
     private Price price;
-
 
     public Price getPrice() {
         return price;
@@ -76,16 +75,16 @@ public class CarModel {
         return brandCar;
     }
 
-    public void setBrandCar(String carBrand) {
-        this.brandCar = carBrand;
+    public void setBrandCar(String brandCar) {
+        this.brandCar = brandCar;
     }
 
     public String getModelCar() {
         return modelCar;
     }
 
-    public void setModelCar(String carModel) {
-        this.modelCar = carModel;
+    public void setModelCar(String modelCar) {
+        this.modelCar = modelCar;
     }
 
     public Transmission getTransmission() {

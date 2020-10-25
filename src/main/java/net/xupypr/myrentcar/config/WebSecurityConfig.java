@@ -30,10 +30,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registration").not().fullyAuthenticated()
                 //Доступ только для пользователей с ролью Администратор
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/news").hasRole("OPERATOR")
+                //Доступ только для пользователей с ролью Оператор
+                .antMatchers("/orders/**").hasRole("OPERATOR")
+                //Доступ только для пользователей с ролью Менеджер
+                .antMatchers("/cars/list").hasRole("MANAGER")
+                .antMatchers("/cars/edit").hasRole("MANAGER")
+                .antMatchers("/cars/delete").hasRole("MANAGER")
+                .antMatchers("/models/**").hasRole("MANAGER")
+                //Доступ только для пользователей с ролью Менеджер
+                .antMatchers("/client/account").hasRole("USER")
+                .antMatchers("/client").hasRole("USER")
                 //Доступ разрешен всем пользователей
                 .antMatchers("/").permitAll()
                 .antMatchers("/resources/**").permitAll()
+                .antMatchers("/cars/lists").permitAll()
+                .antMatchers("/search").permitAll()
+                .antMatchers("/searchCars").permitAll()
                 //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated()
                 .and()

@@ -34,8 +34,4 @@ public class AdminController {
         return "admin";
     }
 
-    @RequestMapping("/news")
-    public String newsList() {
-        return "news";
-    }
 }
